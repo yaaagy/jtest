@@ -126,7 +126,7 @@ pipeline {
       }
     }
 
-    stage('Pre-Deployment') {
+    stage('Handover') {
       parallel {
         stage('Pre-Deployment') {
           steps {
@@ -134,9 +134,19 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('DevOps Handoff') {
           steps {
-            input(message: 'Does DevOps Approve Solution Provisioned along with Monitoring agents streaming capabilities', id: '124', ok: 'Approve')
+            input(message: 'I approve Solution Provisioned along with Monitoring agents streaming capabilities', id: '124', ok: 'Accept')
+            echo 'Updated Service Request'
+          }
+        }
+
+        stage('AppOps Takeover') {
+          steps {
+            echo 'AppOps Team check all elements related to Product Deployment has been provisioned'
+            input(message: 'I have validated all the necessary prerequisites are in place before starting deployment', id: '125', ok: 'Accept')
+            echo 'Updated Service Request'
+            echo 'Infrastructure accepted. Handover Completed'
           }
         }
 
