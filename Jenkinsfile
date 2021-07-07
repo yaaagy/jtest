@@ -47,7 +47,7 @@ pipeline {
         stage('DevOps Intervention') {
           steps {
             echo 'DevOps Team, need to give approval to Infrastructure Spinoff'
-            input(message: 'Do you wish to proceed with Infrasturce Deployment', id: '123', ok: 'Approve')
+            input(message: 'Do you wish to proceed with Infrastructure Deployment', id: '123', ok: 'Approve')
           }
         }
 
@@ -138,6 +138,8 @@ pipeline {
           steps {
             input(message: 'I approve Solution Provisioned along with Monitoring agents streaming capabilities', id: '124', ok: 'Accept')
             echo 'Updated Service Request'
+            echo 'Publish Report for AppOps team with details like, nodes, IP, whitelisting, FQDN, Appstream, DB details, News and MDS servers.'
+            echo 'PPS Updated'
           }
         }
 
