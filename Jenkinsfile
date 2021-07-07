@@ -48,7 +48,15 @@ pipeline {
           steps {
             echo 'DevOps Team, need to give approval to Infrastructure Spinoff'
             input(message: 'Do you wish to proceed with Infrasturce Deployment', id: '123', ok: 'Approve')
+          }
+        }
+
+        stage('Provision Infrastructure') {
+          steps {
             echo 'Terraform Apply - Started'
+            echo 'Connecting to AWS Cloud'
+            echo 'Infrastructure Provisioning - In Progress '
+            echo 'Infrastructure Provisioning - Completed'
           }
         }
 
