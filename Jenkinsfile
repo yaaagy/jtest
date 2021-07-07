@@ -126,9 +126,9 @@ pipeline {
       }
     }
 
-    stage('Handover') {
+    stage('Pre-Deployment') {
       parallel {
-        stage('Pre-Deployment') {
+        stage('Handover') {
           steps {
             echo 'Assessment of Infrastructure provisioned and its upstream connectivity'
           }
@@ -137,7 +137,7 @@ pipeline {
         stage('DevOps Handoff') {
           steps {
             input(message: 'I approve Solution Provisioned along with Monitoring agents streaming capabilities', id: '124', ok: 'Accept')
-            echo 'Updated Service Request'
+            echo 'Service Request - Updated'
             echo 'Publish Report for AppOps team with details like, nodes, IP, whitelisting, FQDN, Appstream, DB details, News and MDS servers.'
             echo 'PPS Updated'
           }
@@ -147,8 +147,28 @@ pipeline {
           steps {
             echo 'AppOps Team check all elements related to Product Deployment has been provisioned'
             input(message: 'I have validated all the necessary prerequisites are in place before starting deployment', id: '125', ok: 'Accept')
-            echo 'Updated Service Request'
-            echo 'Infrastructure accepted. Handover Completed'
+            echo 'Service Request Updated'
+            echo 'Infrastructure accepted. Handover Completed and stakeholders are emailed'
+          }
+        }
+
+      }
+    }
+
+    stage('Deployment') {
+      parallel {
+        stage('Deployment') {
+          steps {
+            echo 'Starting Deployment'
+          }
+        }
+
+        stage('Create Customer Namespace') {
+          steps {
+            echo 'Create customer folders in /opt/customer in regional ansible Deployment server ----- Complete'
+            echo 'Create hosts and env_vars.yml ----  ------ Complete'
+            echo 'Release package is present in /opt/ansible/msc<version> check  ------ Complete'
+            echo 'ansible.cfg check ------ Complete'
           }
         }
 
