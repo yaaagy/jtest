@@ -52,9 +52,7 @@ pipeline {
         }
 
         stage('Provision Infrastructure') {
-          when {
-                beforeInput true
-          }
+          if(ok)
           steps {
                   echo 'Terraform Apply - Started'
                   echo 'Connecting to AWS Cloud'
