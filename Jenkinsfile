@@ -188,6 +188,12 @@ pipeline {
             echo 'winRM to AVA Regional server'
             echo 'Append Customers AVA Servers details in AVA'
             echo 'AVA Configuration Complete'
+            echo 'Pre-Configuration Completed'
+          }
+        }
+
+        stage('AVA Installation') {
+          steps {
             echo 'Uncomment AVA roles in tasks/main_aws.yml'
             echo 'Re-run the deployment - nohup ansible-playbook -i /opt/customers/queu/hosts tasks/main_aws.yml -e"@inventories/aws/defaults/main.yml" -e"@/opt/customers/queu/env_vars.yml" -vv &'
             echo 'AVA Installation Complete'
