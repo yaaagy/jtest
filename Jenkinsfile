@@ -52,7 +52,7 @@ pipeline {
         }
 
         stage('Provision Infrastructure') {
-          if(ok)
+          if($ok == 'Approve')
           steps {
                   echo 'Terraform Apply - Started'
                   echo 'Connecting to AWS Cloud'
