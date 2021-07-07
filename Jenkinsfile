@@ -169,6 +169,8 @@ pipeline {
             echo 'Create hosts and env_vars.yml ----  ------ Complete'
             echo 'Release package is present in /opt/ansible/msc<version> check  ------ Complete'
             echo 'ansible.cfg check ------ Complete'
+            echo 'Running command - nohup ansible-playbook -i /opt/customers/queu/hosts tasks/main_aws.yml -e"@inventories/aws/defaults/main.yml" -e"@/opt/customers/queu/env_vars.yml" -vv &'
+            sleep 10
           }
         }
 
