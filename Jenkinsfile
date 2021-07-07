@@ -206,10 +206,21 @@ pipeline {
             echo 'System Configuration Updated in Actone System Configuration, Internal URL and User Sync ---- Completed'
             echo 'Product Installation ---- Completed'
             input(message: 'I certify that Surveil-X solution has been install and verified sucessfully', id: '126', ok: 'Approve')
+            echo 'Change is Updated and Closed in Wiser'
+            echo 'Service Request in Wiser Closed Successfully'
+          }
+        }
+    }
+
+    stage('Testing') {
+      parallel {
+        stage('Testing') {
+          steps {
+            echo 'Validation to be performed by PS Team'
           }
         }
 
-        stage('1') {
+        stage('Approval by PS Team') {
           steps {
             echo 'Requesting Certification'
             input(message: 'I certify that Surveil-X solution has been install and verified successfully', id: '127', ok: 'Approve')
@@ -224,23 +235,7 @@ pipeline {
             echo 'Email Stakeholders Deployment Completed Successfully'
           }
         }
-
       }
-    }
-
-    stage('Testing') {
-      parallel {
-        stage('Testing') {
-          steps {
-            echo 'Validation to be performed by PS Team'
-          }
-        }
-
-        stage('Approval by PS Team') {
-          steps {
-            echo 'TEst'
-          }
-        }
 
       }
     }
