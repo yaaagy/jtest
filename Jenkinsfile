@@ -4,7 +4,7 @@ pipeline {
     stage('Assessment') {
       steps {
         echo 'Analyze build details sent from Wiser Workflow'
-        sh 'pwd'
+        fileExists 'README.md'
       }
     }
 
