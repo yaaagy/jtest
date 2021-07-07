@@ -200,6 +200,54 @@ pipeline {
           }
         }
 
+        stage('Post-Deployment Configuration') {
+          steps {
+            echo 'Users Creating in ActOne using Command line ---- Completed'
+            echo 'System Configuration Updated in Actone System Configuration, Internal URL and User Sync ---- Completed'
+            echo 'Product Installation ---- Completed'
+            input(message: 'I certify that Surveil-X solution has been install and verified sucessfully', id: '126', ok: 'Approve')
+          }
+        }
+
+        stage('1') {
+          steps {
+            echo 'Requesting Certification'
+            input(message: 'I certify that Surveil-X solution has been install and verified successfully', id: '127', ok: 'Approve')
+            echo 'Accepted Updated in Service Request'
+          }
+        }
+
+        stage('Publish Report') {
+          steps {
+            echo 'Change is Updated and Closed in Wiser'
+            echo 'Service Request in Wiser Closed Successfully'
+            echo 'Email Stakeholders Deployment Completed Successfully'
+          }
+        }
+
+      }
+    }
+
+    stage('Testing') {
+      parallel {
+        stage('Testing') {
+          steps {
+            echo 'Validation to be performed by PS Team'
+          }
+        }
+
+        stage('Approval by PS Team') {
+          steps {
+            echo 'TEst'
+          }
+        }
+
+      }
+    }
+
+    stage('Artifacts') {
+      steps {
+        echo 'Handover Documents Shared with PM and all stakeholders'
       }
     }
 
