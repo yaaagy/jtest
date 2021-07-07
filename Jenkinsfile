@@ -21,6 +21,36 @@ pipeline {
           }
         }
 
+        stage('Essential Dependencies ') {
+          steps {
+            echo 'Make sure all the essential binaries are present like JDK, Python, Ansible, curl, zip etc'
+          }
+        }
+
+      }
+    }
+
+    stage('Infrastructure ') {
+      parallel {
+        stage('Infrastructure ') {
+          steps {
+            echo 'Pre-Provisioning Validation'
+          }
+        }
+
+        stage('Terraform Plan') {
+          steps {
+            echo 'Run Terraform Plan'
+          }
+        }
+
+        stage('DevOps Intervention') {
+          steps {
+            echo 'DevOps Team, need to give approval to Infrastructure Spinoff'
+            input(message: 'Do you wish to proceed with Infrasturce Deployment', id: '123', ok: '1')
+          }
+        }
+
       }
     }
 
