@@ -169,8 +169,28 @@ pipeline {
             echo 'Create hosts and env_vars.yml ----  ------ Complete'
             echo 'Release package is present in /opt/ansible/msc<version> check  ------ Complete'
             echo 'ansible.cfg check ------ Complete'
-            echo 'Running command - nohup ansible-playbook -i /opt/customers/queu/hosts tasks/main_aws.yml -e"@inventories/aws/defaults/main.yml" -e"@/opt/customers/queu/env_vars.yml" -vv &'
+            echo 'Comment AVA deployment task in roles and save the file'
             sleep 10
+          }
+        }
+
+        stage('MSC Installation - 5.10 Patch 8') {
+          steps {
+            echo 'Deployment started and logs are kept in nohoup.out '
+            echo 'nohup ansible-playbook -i /opt/customers/queu/hosts tasks/main_aws.yml -e"@inventories/aws/defaults/main.yml" -e"@/opt/customers/queu/env_vars.yml" -vv & - Running command'
+            sleep 10
+            echo 'Deployment - Completed Successfully'
+          }
+        }
+
+        stage('AVA Pre-Deployment Configuration') {
+          steps {
+            echo 'winRM to AVA Regional server'
+            echo 'Append Customers AVA Servers details in AVA'
+            echo 'AVA Configuration Complete'
+            echo 'Uncomment AVA roles in tasks/main_aws.yml'
+            echo 'Re-run the deployment - nohup ansible-playbook -i /opt/customers/queu/hosts tasks/main_aws.yml -e"@inventories/aws/defaults/main.yml" -e"@/opt/customers/queu/env_vars.yml" -vv &'
+            echo 'AVA Installation Complete'
           }
         }
 
