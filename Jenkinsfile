@@ -47,7 +47,8 @@ pipeline {
         stage('DevOps Intervention') {
           steps {
             echo 'DevOps Team, need to give approval to Infrastructure Spinoff'
-            input(message: 'Do you wish to proceed with Infrasturce Deployment', id: '123', ok: 'Approved')
+            input(message: 'Do you wish to proceed with Infrasturce Deployment', id: '123', ok: 'Approve')
+            echo 'Terraform Apply - Started'
           }
         }
 
