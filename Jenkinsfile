@@ -68,6 +68,12 @@ pipeline {
           }
         }
 
+        stage('Publish Report') {
+          steps {
+            echo 'Publish Report and store all variables in central location for population Deployment files'
+          }
+        }
+
       }
     }
 
@@ -114,6 +120,23 @@ pipeline {
           steps {
             echo 'Installing NCPA'
             echo 'Enrolling Nodes with Nagios Solution'
+          }
+        }
+
+      }
+    }
+
+    stage('Pre-Deployment') {
+      parallel {
+        stage('Pre-Deployment') {
+          steps {
+            echo 'Assessment of Infrastructure provisioned and its upstream connectivity'
+          }
+        }
+
+        stage('') {
+          steps {
+            input(message: 'Does DevOps Approve Solution Provisioned along with Monitoring agents streaming capabilities', id: '124', ok: 'Approve')
           }
         }
 
