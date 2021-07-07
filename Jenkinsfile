@@ -53,10 +53,67 @@ pipeline {
 
         stage('Provision Infrastructure') {
           steps {
-                  echo 'Terraform Apply - Started'
-                  echo 'Connecting to AWS Cloud'
-                  echo 'Infrastructure Provisioning - In Progress '
-                  echo 'Infrastructure Provisioning - Completed'
+            echo 'Terraform Apply - Started'
+            echo 'Connecting to AWS Cloud'
+            echo 'Infrastructure Provisioning - In Progress '
+            echo 'Infrastructure Provisioning - Completed'
+          }
+        }
+
+        stage('Validate Infrastructure ') {
+          steps {
+            echo 'Validating Infra - In Progress'
+            echo 'Validating Infra - Complete'
+            echo 'Publish Report and Email Stakeholders'
+          }
+        }
+
+      }
+    }
+
+    stage('Dependencies') {
+      parallel {
+        stage('Dependencies') {
+          steps {
+            echo 'Node Enrollments, Dependencies Installation'
+          }
+        }
+
+        stage('Node Enrollement') {
+          steps {
+            echo 'Enroll New Nodes with Ansible Master Node'
+            echo 'Enrollment Completed'
+          }
+        }
+
+        stage('Dependencies Installation') {
+          steps {
+            echo 'Installing JDK 1.8'
+            echo 'Installing Python'
+          }
+        }
+
+      }
+    }
+
+    stage('Monitoring Solutions') {
+      parallel {
+        stage('Monitoring Solutions') {
+          steps {
+            echo 'Monitoring and Cloud agents Deployment'
+          }
+        }
+
+        stage('Cloudwatch') {
+          steps {
+            echo 'Install AWS CloudWatch Agents'
+          }
+        }
+
+        stage('Nagios Enrollement') {
+          steps {
+            echo 'Installing NCPA'
+            echo 'Enrolling Nodes with Nagios Solution'
           }
         }
 
