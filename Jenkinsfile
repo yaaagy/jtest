@@ -210,8 +210,10 @@ pipeline {
             echo 'Service Request in Wiser Closed Successfully'
           }
         }
-     }
+
+      }
     }
+
     stage('Testing') {
       parallel {
         stage('Testing') {
@@ -235,12 +237,13 @@ pipeline {
             echo 'Email Stakeholders Deployment Completed Successfully'
           }
         }
+
       }
     }
 
-    stage('Artifacts') {
+    stage('Documentation') {
       steps {
-        echo 'Handover Documents Shared with PM and all stakeholders'
+        echo 'Handover Documents Shared with PM and all stakeholders in pdf format'
       }
     }
 
