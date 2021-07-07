@@ -47,7 +47,7 @@ pipeline {
         stage('DevOps Intervention') {
           steps {
             echo 'DevOps Team, need to give approval to Infrastructure Spinoff'
-            input(message: 'Do you wish to proceed with Infrasturce Deployment', id: '123', ok: '1')
+            input(message: 'Do you wish to proceed with Infrasturce Deployment', id: '123', ok: 'Approved')
           }
         }
 
