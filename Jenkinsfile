@@ -53,10 +53,13 @@ pipeline {
 
         stage('Provision Infrastructure') {
           steps {
-            echo 'Terraform Apply - Started'
-            echo 'Connecting to AWS Cloud'
-            echo 'Infrastructure Provisioning - In Progress '
-            echo 'Infrastructure Provisioning - Completed'
+            when {
+                  beforeInput true
+                  echo 'Terraform Apply - Started'
+                  echo 'Connecting to AWS Cloud'
+                  echo 'Infrastructure Provisioning - In Progress '
+                  echo 'Infrastructure Provisioning - Completed'
+            }
           }
         }
 
