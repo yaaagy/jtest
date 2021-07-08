@@ -6,7 +6,7 @@ pipeline {
         stage('Assessment') {
           steps {
             echo 'Analyze build details sent from Wiser Workflow'
-            echo 'Request No : REQST0001011  Customer Name : XYZ Company  Instance : UAT'
+            echo 'Request No : REQST0001012  Customer Name : XYZ Company  Instance : UAT'
           }
         }
 
