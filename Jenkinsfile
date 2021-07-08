@@ -183,7 +183,7 @@ pipeline {
             echo 'Deployment started and logs are kept in nohoup.out '
             echo 'nohup ansible-playbook -i /opt/customers/queu/hosts tasks/main_aws.yml -e"@inventories/aws/defaults/main.yml" -e"@/opt/customers/queu/env_vars.yml" -vv & - Running command'
             sleep 5
-            readFile 'deploy.log'
+            readFile(file: 'deploy.txt', encoding: 'UTF8')
             echo 'Deployment - Completed Successfully'
           }
         }
