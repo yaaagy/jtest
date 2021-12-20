@@ -179,7 +179,7 @@ pipeline {
           }
         }
 
-        stage('MSC Installation - 5.10 Patch 8') {
+        stage('MSC Installation - 5.11 Service Pack 2') {
           steps {
             echo 'Deployment started and logs are kept in nohoup.out '
             echo 'nohup ansible-playbook -i /opt/customers/queu/hosts tasks/main_aws.yml -e"@inventories/aws/defaults/main.yml" -e"@/opt/customers/queu/env_vars.yml" -vv & - Running command'
