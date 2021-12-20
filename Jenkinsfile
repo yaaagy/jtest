@@ -128,6 +128,12 @@ pipeline {
           }
         }
 
+        stage('AppOps Monitoring') {
+          steps {
+            echo 'AppOps Monitoring Solution Deployed'
+          }
+        }
+
       }
     }
 
