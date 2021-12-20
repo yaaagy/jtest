@@ -217,6 +217,12 @@ pipeline {
           }
         }
 
+        stage('SSL Configuration') {
+          steps {
+            echo 'Installed Shell certificate for the customer'
+          }
+        }
+
       }
     }
 
