@@ -219,7 +219,7 @@ pipeline {
 
         stage('SSL Configuration') {
           steps {
-            echo 'Installed Shell certificate for the customer'
+            echo 'Installed SSL certificate for the customer and enable port 443 from server.xml'
           }
         }
 
